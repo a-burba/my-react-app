@@ -24,13 +24,9 @@ function Square({ value, onSquareClick }) {
 
 
 // removing "export default" bc that's going over to Game() now
-function Board() { //The first line defines a function called Square. The export JavaScript keyword makes this function accessible outside of this file. The default keyword tells other files using your code that it’s the main function in your file.
-  // whose turn it is
-  const [xIsNext, setXIsNext] = useState(true);
+function Board({ xIsNext, squares, onPlay }) { //The first line defines a function called Square. The export JavaScript keyword makes this function accessible outside of this file. The default keyword tells other files using your code that it’s the main function in your file.
   
-  // lifting state into the parent
-  const [squares, setSquares] = useState(Array(9).fill(null));
-
+  // removed state handling here after adding Board
   
   function handleClick(i) {
     // return early if someone tries to play in a non-empty square or if someone won
@@ -50,8 +46,8 @@ function Board() { //The first line defines a function called Square. The export
     }
 
     // Calling the setSquares function lets React know the state of the component has changed. This will trigger a re-render of the components that use the squares state (Board) as well as its child components (the Square components that make up the board).
-    setSquares(nextSquares);
-    setXIsNext(!xIsNext);
+    // updated to onPlay after adding Board
+    onPlay(nextSquares);
   }
 
   // show if someone won and who's next
