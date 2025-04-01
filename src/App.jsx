@@ -10,6 +10,8 @@
 function Square({ value, onSquareClick }) {
   // state is private to the parent, so need to call onSqareClick instead of updating directly in Sqaure()
   return (
+    // onClick is built-in; all the other stuff is self-defined names, but
+    // in React, it’s conventional to use onSomething names for props which represent events and handleSomething for the function definitions which handle those events.
     <button className="square" onClick={onSquareClick}>
       {value}
     </button>
@@ -17,17 +19,28 @@ function Square({ value, onSquareClick }) {
 }
 
 export default function Board() { //The first line defines a function called Square. The export JavaScript keyword makes this function accessible outside of this file. The default keyword tells other files using your code that it’s the main function in your file.
+  // whose turn it is
+  const [xIsNext, setXIsNext] = useState(true);
+  
   // lifting state into the parent
   const [squares, setSquares] = useState(Array(9).fill(null));
 
   
   function handleClick(i) {
     // creates a copy of the squares array
+    // By default, all child components re-render automatically when the state of a parent component changes. This includes even the child components that weren’t affected by the change. 
     const nextSquares = squares.slice();
-    // updates the nextSquares array to add X to the first ([0] index) square.
-    nextSquares[i] = "X";
+
+    // sets X or O depending on whose turn it is
+    if (xIsNext) {
+      nextSquares[i] = "X";
+    } else {
+      nextSquares[i] = "O";
+    }
+
     // Calling the setSquares function lets React know the state of the component has changed. This will trigger a re-render of the components that use the squares state (Board) as well as its child components (the Square components that make up the board).
     setSquares(nextSquares);
+    setXIsNext(!xIsNext);
   }
 
 
