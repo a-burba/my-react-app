@@ -27,8 +27,8 @@ export default function Board() { //The first line defines a function called Squ
 
   
   function handleClick(i) {
-    // return early if someone tries to play in a non-empty square
-    if (squares[i]) {
+    // return early if someone tries to play in a non-empty square or if someone won
+    if (squares[i] || calculateWinner(squares)) {
       return;
     }
 
