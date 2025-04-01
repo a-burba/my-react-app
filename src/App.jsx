@@ -6,6 +6,8 @@
  import { useState } from 'react';
 
 
+
+
  // props
 function Square({ value, onSquareClick }) {
   // state is private to the parent, so need to call onSqareClick instead of updating directly in Sqaure()
@@ -18,7 +20,11 @@ function Square({ value, onSquareClick }) {
   );
 }
 
-export default function Board() { //The first line defines a function called Square. The export JavaScript keyword makes this function accessible outside of this file. The default keyword tells other files using your code that it’s the main function in your file.
+
+
+
+// removing "export default" bc that's going over to Game() now
+function Board() { //The first line defines a function called Square. The export JavaScript keyword makes this function accessible outside of this file. The default keyword tells other files using your code that it’s the main function in your file.
   // whose turn it is
   const [xIsNext, setXIsNext] = useState(true);
   
@@ -48,8 +54,6 @@ export default function Board() { //The first line defines a function called Squ
     setXIsNext(!xIsNext);
   }
 
-
-
   // show if someone won and who's next
   const winner = calculateWinner(squares);
   let status;
@@ -58,11 +62,6 @@ export default function Board() { //The first line defines a function called Squ
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
-
-
-
-
-
 
   // component needs to return a SINGLE jsx element 
   // use fragments to wrap multiple things instead
@@ -88,6 +87,35 @@ export default function Board() { //The first line defines a function called Squ
     </>
   );
 }
+
+
+
+
+
+
+export default function Game() {
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board />
+      </div>
+      <div className="game-info">
+        <ol>{/*TODO*/}</ol>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
