@@ -92,8 +92,10 @@ function Board() { //The first line defines a function called Square. The export
 
 
 
-
+//  Just like you “lifted state up” from the Square component into the Board component, you will now lift it up from the Board into the top-level Game component. This gives the Game component full control over the Board’s data and lets it instruct the Board to render previous turns from the history.
 export default function Game() {
+  const [xIsNext, setXIsNext] = useState(true);
+  const [history, setHistory] = useState([Array(9).fill(null)]);
   return (
     <div className="game">
       <div className="game-board">
