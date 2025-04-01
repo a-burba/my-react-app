@@ -27,6 +27,11 @@ export default function Board() { //The first line defines a function called Squ
 
   
   function handleClick(i) {
+    // return early if someone tries to play in a non-empty square
+    if (squares[i]) {
+      return;
+    }
+
     // creates a copy of the squares array
     // By default, all child components re-render automatically when the state of a parent component changes. This includes even the child components that weren’t affected by the change. 
     const nextSquares = squares.slice();
