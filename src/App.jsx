@@ -117,7 +117,8 @@ export default function Game() {
       description = 'Go to game start';
     }
     return (
-      <li>
+      // Keys do not need to be globally unique; they only need to be unique between components and their siblings.
+      <li key={move}>
         <button onClick={() => jumpTo(move)}>{description}</button>
       </li>
     );
