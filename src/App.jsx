@@ -6,45 +6,32 @@
  import { useState } from 'react';
 
 
- function Square() {
-  const [value, setValue] = useState(null); //The null passed to useState is used as the initial value for this state variable, so value here starts off equal to null.
-
-  function handleClick() {
-    setValue('X');
-  }
-
-  //return <button className="square">{value}</button>;
-  return (
-    <button
-      className="square"
-      onClick={handleClick}
-    >
-      {value}
-    </button>
-  );
+function Square({value}) {
+  return <button className="square">{value}</button>;
 }
 
 export default function Board() { //The first line defines a function called Square. The export JavaScript keyword makes this function accessible outside of this file. The default keyword tells other files using your code that it’s the main function in your file.
-  //return <button className="square">X</button>; //<button> is a JSX element. A JSX element is a combination of JavaScript code and HTML tags that describes what you’d like to display. 
+  // lifting state into the parent
+  const [squares, setSquares] = useState(Array(9).fill(null));
 
   // component needs to return a SINGLE jsx element 
   // use fragments to wrap multiple things instead
   return (
     <>
-      <div className="board-row">
-        <Square />
-        <Square />
-        <Square />
+       <div className="board-row">
+        <Square value={squares[0]} />
+        <Square value={squares[1]} />
+        <Square value={squares[2]} />
       </div>
       <div className="board-row">
-        <Square />
-        <Square />
-        <Square />
+        <Square value={squares[3]} />
+        <Square value={squares[4]} />
+        <Square value={squares[5]} />
       </div>
       <div className="board-row">
-        <Square />
-        <Square />
-        <Square />
+        <Square value={squares[6]} />
+        <Square value={squares[7]} />
+        <Square value={squares[8]} />
       </div>
     </>
   );
