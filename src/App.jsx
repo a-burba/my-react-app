@@ -5,7 +5,19 @@
  // "value" is a prop (to pass the value each square should have from the parent component (Board) to its child (Square).)
  // so that every square doesn't say 1
  function Square({ value }) {
-  return <button className="square">{value}</button>;
+  function handleClick() {
+    console.log('clicked!');
+  }
+
+  //return <button className="square">{value}</button>;
+  return (
+    <button
+      className="square"
+      onClick={handleClick}
+    >
+      {value}
+    </button>
+  );
 }
 
 export default function Board() { //The first line defines a function called Square. The export JavaScript keyword makes this function accessible outside of this file. The default keyword tells other files using your code that it’s the main function in your file.
