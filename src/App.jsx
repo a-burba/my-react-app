@@ -9,6 +9,13 @@ export default function Square() { //The first line defines a function called Sq
     <>
       <button className="square">X</button>
       <button className="square">X</button>
+      <button className="square">X</button>
+      <button className="square">X</button>
+      <button className="square">X</button>
+      <button className="square">X</button>
+      <button className="square">X</button>
+      <button className="square">X</button>
+      <button className="square">X</button>
     </>
   );
 }
