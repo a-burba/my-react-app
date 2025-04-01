@@ -90,10 +90,10 @@ function Board({ xIsNext, squares, onPlay }) { //The first line defines a functi
 
 //  Just like you “lifted state up” from the Square component into the Board component, you will now lift it up from the Board into the top-level Game component. This gives the Game component full control over the Board’s data and lets it instruct the Board to render previous turns from the history.
 export default function Game() {
-  const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([Array(9).fill(null)]);
   // Before you can implement jumpTo, you need the Game component to keep track of which step the user is currently viewing
   const [currentMove, setCurrentMove] = useState(0);
+  const xIsNext = currentMove % 2 === 0; // better way to keep track of turns
   // OLD: const currentSquares = history[history.length - 1]; // To render the squares for the current move, you’ll want to read the last squares array from the history
   // NEW: modify the Game component to render the currently selected move, instead of always rendering the final move:
   const currentSquares = history[currentMove];
@@ -107,14 +107,12 @@ export default function Game() {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1); // Each time a move is made, you need to update currentMove to point to the latest history entry.
-    setXIsNext(!xIsNext);
   }
 
 
   // switching between past moves
   function jumpTo(nextMove) {
     setCurrentMove(nextMove);
-    setXIsNext(nextMove % 2 === 0);
   }
 
   
