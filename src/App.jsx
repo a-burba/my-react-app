@@ -49,11 +49,27 @@ export default function Board() { //The first line defines a function called Squ
   }
 
 
+
+  // show if someone won and who's next
+  const winner = calculateWinner(squares);
+  let status;
+  if (winner) {
+    status = "Winner: " + winner;
+  } else {
+    status = "Next player: " + (xIsNext ? "X" : "O");
+  }
+
+
+
+
+
+
   // component needs to return a SINGLE jsx element 
   // use fragments to wrap multiple things instead
   return (
     <>
-       <div className="board-row">
+      <div className="status">{status}</div>
+      <div className="board-row">
         {/* () => handleClick(0) is an arrow function, which is a shorter way to define functions. When the square is clicked, the code after the => “arrow” will run, calling handleClick(0). */}
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
