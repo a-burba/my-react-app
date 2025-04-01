@@ -1,6 +1,12 @@
  // code in App.js creates a component
+ // NOTE: componenets (Board and Square) must start w capital letter
 
-export default function Square() { //The first line defines a function called Square. The export JavaScript keyword makes this function accessible outside of this file. The default keyword tells other files using your code that it’s the main function in your file.
+
+ function Square() {
+  return <button className="square">1</button>;
+}
+
+export default function Board() { //The first line defines a function called Square. The export JavaScript keyword makes this function accessible outside of this file. The default keyword tells other files using your code that it’s the main function in your file.
   //return <button className="square">X</button>; //<button> is a JSX element. A JSX element is a combination of JavaScript code and HTML tags that describes what you’d like to display. 
 
   // component needs to return a SINGLE jsx element 
@@ -8,19 +14,19 @@ export default function Square() { //The first line defines a function called Sq
   return (
     <>
       <div className="board-row">
-        <button className="square">1</button>
-        <button className="square">2</button>
-        <button className="square">3</button>
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div className="board-row">
-        <button className="square">4</button>
-        <button className="square">5</button>
-        <button className="square">6</button>
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div className="board-row">
-        <button className="square">7</button>
-        <button className="square">8</button>
-        <button className="square">9</button>
+        <Square />
+        <Square />
+        <Square />
       </div>
     </>
   );
