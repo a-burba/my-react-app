@@ -96,10 +96,16 @@ function Board() { //The first line defines a function called Square. The export
 export default function Game() {
   const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([Array(9).fill(null)]);
+  const currentSquares = history[history.length - 1]; // To render the squares for the current move, you’ll want to read the last squares array from the history
+
+  function handlePlay(nextSquares) {
+    // TODO
+  }
+
   return (
     <div className="game">
       <div className="game-board">
-        <Board />
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
         <ol>{/*TODO*/}</ol>
