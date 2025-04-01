@@ -95,7 +95,9 @@ export default function Game() {
   const currentSquares = history[history.length - 1]; // To render the squares for the current move, you’ll want to read the last squares array from the history
 
   function handlePlay(nextSquares) {
-    // TODO
+    // these updates have to happen here now that they were removed from Board
+    setHistory([...history, nextSquares]); // creates copy array of history & appends nextSquares to the copy
+    setXIsNext(!xIsNext);
   }
 
   return (
