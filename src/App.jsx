@@ -2,11 +2,15 @@
  // NOTE: componenets (Board and Square) must start w capital letter
 
 
- // "value" is a prop (to pass the value each square should have from the parent component (Board) to its child (Square).)
- // so that every square doesn't say 1
- function Square({ value }) {
+// state to remember stuff like if been clicked
+ import { useState } from 'react';
+
+
+ function Square() {
+  const [value, setValue] = useState(null); //The null passed to useState is used as the initial value for this state variable, so value here starts off equal to null.
+
   function handleClick() {
-    console.log('clicked!');
+    setValue('X');
   }
 
   //return <button className="square">{value}</button>;
@@ -28,19 +32,19 @@ export default function Board() { //The first line defines a function called Squ
   return (
     <>
       <div className="board-row">
-        <Square value="1" />
-        <Square value="2" />
-        <Square value="3" />
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div className="board-row">
-        <Square value="4" />
-        <Square value="5" />
-        <Square value="6" />
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div className="board-row">
-        <Square value="7" />
-        <Square value="8" />
-        <Square value="9" />
+        <Square />
+        <Square />
+        <Square />
       </div>
     </>
   );
