@@ -21,11 +21,11 @@ export default function Board() { //The first line defines a function called Squ
   const [squares, setSquares] = useState(Array(9).fill(null));
 
   
-  function handleClick() {
+  function handleClick(i) {
     // creates a copy of the squares array
     const nextSquares = squares.slice();
     // updates the nextSquares array to add X to the first ([0] index) square.
-    nextSquares[0] = "X";
+    nextSquares[i] = "X";
     // Calling the setSquares function lets React know the state of the component has changed. This will trigger a re-render of the components that use the squares state (Board) as well as its child components (the Square components that make up the board).
     setSquares(nextSquares);
   }
@@ -36,7 +36,7 @@ export default function Board() { //The first line defines a function called Squ
   return (
     <>
        <div className="board-row">
-        <Square value={squares[0]} onSquareClick={handleClick} />
+        <Square value={squares[0]} onSquareClick={handleClick(0)} /> {/* this is what's causing the error bc it's re-rendering too much*/}
         <Square value={squares[1]} />
         <Square value={squares[2]} />
       </div>
